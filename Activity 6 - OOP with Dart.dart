@@ -20,7 +20,7 @@ class Book {
     Title = stdin.readLineSync()!;
     stdout.write("Author :");
     Author = stdin.readLineSync()!;
-   
+    //the genre keeps on looping until the input is valid
     do {
       stdout.write("Genre: ");
       Genre = stdin.readLineSync()!;
@@ -68,24 +68,25 @@ displayOptions() {
   print('"Art and Recreation"');
 }
 
-var BookDetails = new Map(); 
-List ISBN = [];
-int bookCount = 0;
+var BookDetails = new Map(); //Map for ISBN : Book Object
+List ISBN = []; //List for ISBN
+int bookCount = 0; //Total Number of Books
 
-var CustomerDetails = new Map(); 
+var CustomerDetails = new Map(); //Map for customer USERNAME : customerObject
 List USERNAME =
-    []; 
-int customerCount = 0; 
+    []; // List for customer USERNAME, which is unique in every customer
+int customerCount = 0; //Total Number of Customer
 
 main() {
   displayOptions();
   var choice = " ";
 
+  //Here we repeat the process while not exiting
   do {
     stdout.write("Enter Choice: ");
     choice = stdin.readLineSync()!;
     switch (choice) {
-      case '1': 
+      case '1': //Add Book Option
         {
           var temp = " ";
           stdout.write("Enter ISBN : ");
@@ -104,7 +105,7 @@ main() {
         }
         break;
 
-      case '2': 
+      case '2': // Display All Available
         {
           print("All Books: ");
           for (int a = 0; a < bookCount; a++) {
@@ -114,7 +115,7 @@ main() {
         }
         break;
 
-      case '3': 
+      case '3': // Display Not Available
         {
           print("Borrowed Books: ");
           for (int a = 0; a < bookCount; a++) {
@@ -125,7 +126,7 @@ main() {
         }
         break;
 
-      case '4':
+      case '4': // Display Available
         {
           print("Available Books");
           for (int a = 0; a < bookCount; a++) {
@@ -136,7 +137,7 @@ main() {
         }
         break;
 
-      case '5': 
+      case '5': // Add New Customer
         {
           var temp = " ";
           stdout.write("Enter Username : ");
@@ -154,7 +155,7 @@ main() {
         }
         break;
 
-      case '6': 
+      case '6': // Display All Customer
         {
           for (int a = 0; a < customerCount; a++) {
             CustomerDetails[USERNAME[a]].display();
@@ -162,7 +163,7 @@ main() {
         }
         break;
 
-      case '7':
+      case '7': //Borrow Book
         {
           var tempUname = " ";
           stdout.write("Enter Username : ");
